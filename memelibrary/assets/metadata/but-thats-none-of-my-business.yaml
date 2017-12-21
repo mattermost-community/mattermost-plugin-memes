@@ -1,0 +1,8 @@
+aliases:
+  - kermit
+patterns:
+  - pattern: (.*) (but that'?s none of [^ ]+ business.*)
+    text:
+      - $1
+      - $2
+    example: this amount of tea may be unhealthy. but that's none of your business

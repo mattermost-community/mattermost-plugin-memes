@@ -1,0 +1,24 @@
+package: github.com/mattermost/mattermost-plugin-memes
+import:
+- package: github.com/golang/freetype
+  subpackages:
+  - truetype
+- package: github.com/gorilla/mux
+  version: ^1.6.0
+- package: github.com/kballard/go-shellquote
+- package: github.com/mattermost/mattermost-server
+  version: ^4.5.0-rc1
+  subpackages:
+  - plugin
+  - plugin/rpcplugin
+- package: golang.org/x/image
+  subpackages:
+  - font
+  - math/fixed
+- package: gopkg.in/yaml.v2
+testImport:
+- package: github.com/stretchr/testify
+  version: ^1.1.4
+  subpackages:
+  - assert
+  - require

@@ -1,0 +1,16 @@
+aliases:
+  - batman-robin
+  - batman-and-robin
+  - batman-slap
+example:
+  - silence is golden
+  - and duct tape is silver
+slots:
+  - x: 2
+    y: 2
+    width: 200
+    height: 90
+  - x: 212
+    y: 2
+    width: 180
+    height: 80

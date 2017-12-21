@@ -1,0 +1,6 @@
+patterns:
+  - pattern: ((?:\b\S+\b\W*){1,2}) all the ((?:\b\S+\b\W*){1,2})
+    text:
+      - $1
+      - all the $2
+    example: delete all the things!

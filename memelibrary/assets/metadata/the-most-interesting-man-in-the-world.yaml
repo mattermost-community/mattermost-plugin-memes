@@ -1,0 +1,10 @@
+aliases:
+  - most-interesting-man
+  - most-interesting-man-in-the-world
+  - i-dont-always
+patterns:
+  - pattern: (i don'?t always) (.+) (but .+) 
+    text:
+      - $1 $2
+      - $3
+    example: i don't always take out the recycling, but when i do, i look like a raging alcoholic
