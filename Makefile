@@ -11,9 +11,9 @@ dist: vendor memelibrary/assets.go $(shell go list -f '{{range .GoFiles}}{{$$.Di
 	rm -rf ./dist
 	go get github.com/mitchellh/gox
 	$(shell go env GOPATH)/bin/gox -osarch='darwin/amd64 linux/amd64 windows/amd64' -output 'dist/intermediate/plugin_{{.OS}}_{{.Arch}}'
-	tar -czvf dist/mattermost-meme-plugin-darwin-amd64.tar.gz $(TAR_PLUGIN_EXE_TRANSFORM) dist/intermediate/plugin_darwin_amd64 plugin.yaml
-	tar -czvf dist/mattermost-meme-plugin-linux-amd64.tar.gz $(TAR_PLUGIN_EXE_TRANSFORM) dist/intermediate/plugin_linux_amd64 plugin.yaml
-	tar -czvf dist/mattermost-meme-plugin-windows-amd64.tar.gz $(TAR_PLUGIN_EXE_TRANSFORM) dist/intermediate/plugin_windows_amd64.exe plugin.yaml
+	tar -czvf dist/mattermost-memes-plugin-darwin-amd64.tar.gz $(TAR_PLUGIN_EXE_TRANSFORM) dist/intermediate/plugin_darwin_amd64 plugin.yaml
+	tar -czvf dist/mattermost-memes-plugin-linux-amd64.tar.gz $(TAR_PLUGIN_EXE_TRANSFORM) dist/intermediate/plugin_linux_amd64 plugin.yaml
+	tar -czvf dist/mattermost-memes-plugin-windows-amd64.tar.gz $(TAR_PLUGIN_EXE_TRANSFORM) dist/intermediate/plugin_windows_amd64.exe plugin.yaml
 	rm -rf dist/intermediate
 
 memelibrary/assets.go: $(shell find memelibrary/assets)
@@ -25,7 +25,7 @@ mattermost-memes-plugin.tar.gz: vendor memelibrary/assets.go $(shell go list -f 
 	tar -czvf $@ plugin.exe plugin.yaml
 	rm plugin.exe
 
-test: vendor
+test: vendor memelibrary/assets.go
 	go test -v ./...
 
 vendor: glide.lock
