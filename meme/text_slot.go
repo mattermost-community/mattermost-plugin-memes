@@ -185,9 +185,9 @@ func firstLine(face font.Face, text string, limit fixed.Int26_6) (string, fixed.
 
 		if width+advance > limit {
 			if lastBreak == 0 {
-				return text[:pos], width, text[pos:]
+				return string([]rune(text)[:pos]), width, string([]rune(text)[pos:])
 			}
-			return text[:lastBreak], lastBreakWidth, text[lastBreak:]
+			return string([]rune(text)[:lastBreak]), lastBreakWidth, string([]rune(text)[lastBreak:])
 		}
 
 		pos += 1
