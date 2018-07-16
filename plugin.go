@@ -10,10 +10,9 @@ import (
 	"strings"
 
 	"github.com/gorilla/mux"
-	"github.com/kballard/go-shellquote"
+	shellquote "github.com/kballard/go-shellquote"
 	"github.com/mattermost/mattermost-server/model"
 	"github.com/mattermost/mattermost-server/plugin"
-	"github.com/mattermost/mattermost-server/plugin/rpcplugin"
 
 	"github.com/mattermost/mattermost-plugin-memes/meme"
 	"github.com/mattermost/mattermost-plugin-memes/memelibrary"
@@ -101,20 +100,22 @@ func serveTemplateJPEG(w http.ResponseWriter, r *http.Request) {
 }
 
 type Plugin struct {
+	plugin.MattermostPlugin
+
 	router *mux.Router
 }
 
-func (p *Plugin) OnActivate(api plugin.API) error {
+func (p *Plugin) OnActivate() error {
 	p.router = mux.NewRouter()
 	p.router.HandleFunc("/templates/{name}.jpg", serveTemplateJPEG).Methods("GET")
-	return api.RegisterCommand(&model.Command{
+	return p.API.RegisterCommand(&model.Command{
 		Trigger:          "meme",
 		AutoComplete:     true,
 		AutoCompleteDesc: "Renders custom memes so you can express yourself with culture.",
 	})
 }
 
-func (p *Plugin) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+func (p *Plugin) ServeHTTP(c *plugin.Context, w http.ResponseWriter, r *http.Request) {
 	if r.Header.Get("Mattermost-User-Id") == "" {
 		http.Error(w, "please log in", http.StatusForbidden)
 		return
@@ -123,7 +124,7 @@ func (p *Plugin) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	p.router.ServeHTTP(w, r)
 }
 
-func (p *Plugin) ExecuteCommand(args *model.CommandArgs) (*model.CommandResponse, *model.AppError) {
+func (p *Plugin) ExecuteCommand(c *plugin.Context, args *model.CommandArgs) (*model.CommandResponse, *model.AppError) {
 	input := strings.TrimSpace(strings.TrimPrefix(args.Command, "/meme"))
 
 	if input == "" {
@@ -182,6 +183,6 @@ func main() {
 			os.Exit(1)
 		}
 	} else {
-		rpcplugin.Main(&Plugin{})
+		plugin.ClientMain(&Plugin{})
 	}
 }
