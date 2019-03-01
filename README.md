@@ -6,6 +6,8 @@ This plugin will create a slash command that you can use to create memes!
 
 `/meme memes. memes everywhere`
 
+For more information like avaliable memes or command syntax type `/meme ` and press enter.
+
 ## Installation
 
 Go to the GitHub releases tab and download the latest release for your server architecture. You can upload this file in the Mattermost system console to install the plugin.
