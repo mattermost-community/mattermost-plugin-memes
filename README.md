@@ -1,4 +1,4 @@
-# mattermost-plugin-memes [![Build Status](https://travis-ci.org/mattermost/mattermost-plugin-memes.svg?branch=master)](https://travis-ci.org/mattermost/mattermost-plugin-memes)
+# mattermost-plugin-memes [![CircleCI](https://circleci.com/gh/mattermost/mattermost-plugin-memes.svg?style=svg)](https://circleci.com/gh/mattermost/mattermost-plugin-memes)
 
 This plugin will create a slash command that you can use to create memes!
 
