@@ -1,6 +1,0 @@
-patterns:
-  - pattern: am i the only one (here|around here)? (.*)
-    text:
-      - am i the only one $1
-      - $2
-    example: am i the only one here that knows how to meme

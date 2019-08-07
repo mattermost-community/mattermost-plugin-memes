@@ -1,0 +1,8 @@
+aliases:
+  - thatd-be-great
+patterns:
+  - pattern: (.+)\b(that would|that'd|thatd)( be great[^a-z]*)
+    text:
+    - $1
+    - $2$3
+    example: yeah if you could post more memes, that would be great

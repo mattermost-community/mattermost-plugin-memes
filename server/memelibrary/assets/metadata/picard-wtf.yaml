@@ -1,0 +1,9 @@
+aliases:
+  - annoyed-picard
+  - captain-picard-wtf
+patterns:
+  - pattern: (why|what) the fuck\b(.+)
+    text:
+      - $1 the fuck
+      - $2
+    example: why the fuck does it always need to install directx

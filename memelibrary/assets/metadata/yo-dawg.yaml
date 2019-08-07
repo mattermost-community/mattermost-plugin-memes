@@ -1,8 +1,0 @@
-aliases:
-  - xzibit
-patterns:
-  - pattern: (yo dawg\b.+?)(so .+)
-    text:
-      - $1
-      - $2
-    example: yo dawg, i heard you like cars. so i put a car in your car so you can drive while you drive

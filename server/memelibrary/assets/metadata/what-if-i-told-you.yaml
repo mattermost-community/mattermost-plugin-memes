@@ -1,0 +1,8 @@
+aliases:
+  - morpheus
+patterns:
+  - pattern: (what if i told you)\b(.+)
+    text:
+      - $1
+      - $2
+    example: what if i told you pressing a and b doesn't help you catch pokemon

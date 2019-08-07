@@ -1,9 +1,0 @@
-aliases:
-  - fry
-  - not-sure
-patterns:
-  - pattern: (not sure if .+) (or .+)
-    text:
-      - $1
-      - $2
-    example: not sure if song is skipping or just a remix

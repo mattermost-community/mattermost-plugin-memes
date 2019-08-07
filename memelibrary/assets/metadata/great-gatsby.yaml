@@ -1,9 +1,0 @@
-aliases:
-  - gatsby
-  - old-sport
-patterns:
-  - pattern: (.*)\b(old sport[^a-z]*)
-    text:
-      - $1
-      - $2
-    example: merry christmas, old sport
