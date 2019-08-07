@@ -1,0 +1,8 @@
+aliases:
+  - jimmy-mcmillan
+patterns:
+  - pattern: (.+)(is|are) (too damn high[^a-z]*)
+    text:
+      - $1
+      - $2 $3
+    example: the mouse sensitivity is too damn high

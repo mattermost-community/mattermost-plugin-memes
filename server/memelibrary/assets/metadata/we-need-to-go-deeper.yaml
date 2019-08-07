@@ -1,0 +1,8 @@
+aliases:
+  - deeper
+patterns:
+  - pattern: (.*)\b(we need to go deeper[^a-z]*)
+    text:
+      - $1
+      - $2
+    example: we need to go deeper

@@ -1,6 +1,0 @@
-patterns:
-  - pattern: (.+[\.,]) (.+) (everywhere[^a-z]*)
-    text:
-      - $1
-      - $2 $3
-    example: geese. geese everywhere

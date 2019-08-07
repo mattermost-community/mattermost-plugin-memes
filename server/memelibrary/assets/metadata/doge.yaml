@@ -1,0 +1,40 @@
+patterns:
+  - pattern: (wo+w|such|much|very|so+|many)\b(.*?)\b(wo+w|such|much|very|so+|many)\b(.*?)(?:\b(wo+w|such|much|very|so+|many)\b(.*?)(?:\b(wo+w|such|much|very|so+|many)\b(.*?)(?:\b(wo+w|such|much|very|so+|many)\b(.*?))?)?)?
+    text:
+      - $1$2
+      - $3$4
+      - $5$6
+      - $7$8
+      - $9$10
+    example: wooow such meme very dank so cool
+slots:
+  - x: 30
+    y: 50
+    width: 280
+    height: 80
+    font: ComicNeue-Bold
+    text_color: [255, 0, 0]
+  - x: 367
+    y: 154
+    width: 235
+    height: 70
+    font: ComicNeue-Bold
+    text_color: [0, 0, 255]
+  - x: 231
+    y: 319
+    width: 300
+    height: 98
+    font: ComicNeue-Bold
+    text_color: [0, 255, 0]
+  - x: 76
+    y: 496
+    width: 240
+    height: 70
+    font: ComicNeue-Bold
+    text_color: [0, 255, 255]
+  - x: 394
+    y: 504
+    width: 190
+    height: 90
+    font: ComicNeue-Bold
+    text_color: [255, 255, 0]

@@ -1,0 +1,9 @@
+aliases:
+  - not-simply
+  - one-does-not
+patterns:
+  - pattern: (one does not simply)(.+)
+    text:
+      - $1
+      - $2
+    example: one does not simply walk into mordor

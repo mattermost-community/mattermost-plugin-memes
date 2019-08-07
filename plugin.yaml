@@ -1,6 +1,0 @@
-id: memes
-backend:
-    executable: plugin.exe
-name: Memes
-description: Gives you the ability to quickly create and post memes via a /meme slash command.
-version: '1.0'

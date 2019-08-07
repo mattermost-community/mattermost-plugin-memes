@@ -1,6 +1,0 @@
-patterns:
-  - pattern: (.+) (y u .+)
-    text:
-      - $1
-      - $2
-    example: onions y u make eyes water

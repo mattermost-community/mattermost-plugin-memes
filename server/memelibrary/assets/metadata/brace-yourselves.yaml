@@ -1,0 +1,9 @@
+aliases:
+  - brace-yourself
+  - winter-is-coming
+patterns:
+  - pattern: brace (yourselves|yourself)([^a-z]+)?\b([^,\.;]+.*)
+    text:
+      - brace $1$2
+      - $3
+    example: brace yourselves, winter is coming

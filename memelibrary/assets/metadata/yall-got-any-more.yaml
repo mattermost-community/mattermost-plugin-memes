@@ -1,6 +1,0 @@
-patterns:
-  - pattern: (ya'?ll got any more of them) (.+)
-    text:
-      - $1
-      - $2
-    example: ya'll got any more of them pixels?
