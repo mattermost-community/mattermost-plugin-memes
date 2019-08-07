@@ -1,4 +1,8 @@
-# mattermost-plugin-memes [![CircleCI](https://circleci.com/gh/mattermost/mattermost-plugin-memes.svg?style=svg)](https://circleci.com/gh/mattermost/mattermost-plugin-memes)
+# Mattermost Memes Plugin
+
+[![Build Status](https://img.shields.io/circleci/project/github/mattermost/mattermost-plugin-memes/master.svg)](https://circleci.com/gh/mattermost/mattermost-plugin-memes)
+[![Code Coverage](https://img.shields.io/codecov/c/github/mattermost/mattermost-plugin-memes/master.svg)](https://codecov.io/gh/mattermost/mattermost-plugin-memes)
+
 
 This plugin will create a slash command that you can use to create memes!
 
@@ -6,7 +10,7 @@ This plugin will create a slash command that you can use to create memes!
 
 `/meme memes. memes everywhere`
 
-For more information like avaliable memes or command syntax type `/meme ` and press enter.
+For more information like available memes or command syntax type `/meme ` and press enter.
 
 ## Installation
 
@@ -26,4 +30,4 @@ If you want to create a fully bundled plugin that will run on a local server, yo
 
 ## Releasing
 
-To make a release, update the version number in plugin.yaml, and create a release via the GitHub interface. Travis will upload the distributables for you.
+To make a release, update the version number in plugin.yaml, and create a release via the GitHub interface. CircleCI will upload the distributables for you.
