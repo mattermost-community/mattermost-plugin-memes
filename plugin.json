@@ -1,6 +1,6 @@
 {
     "id": "memes",
-    "name": "Memese",
+    "name": "Memes",
     "description": "Gives you the ability to quickly create and post memes via a /meme slash command.",
     "version": "1.1.0",
     "min_server_version": "5.2.0",
