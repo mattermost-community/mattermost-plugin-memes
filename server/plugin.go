@@ -11,8 +11,8 @@ import (
 
 	"github.com/gorilla/mux"
 	shellquote "github.com/kballard/go-shellquote"
-	"github.com/mattermost/mattermost-server/model"
-	"github.com/mattermost/mattermost-server/plugin"
+	"github.com/mattermost/mattermost-server/v5/model"
+	"github.com/mattermost/mattermost-server/v5/plugin"
 
 	"github.com/mattermost/mattermost-plugin-memes/server/meme"
 	"github.com/mattermost/mattermost-plugin-memes/server/memelibrary"
