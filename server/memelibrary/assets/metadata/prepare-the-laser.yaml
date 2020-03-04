@@ -1,0 +1,9 @@
+aliases:
+    - dr-evil
+font: ComicNeue-Regular
+patterns:
+  - pattern: (prepare the)\s(.+)
+    text:
+      - $1
+      - '"$2"'
+    example: prepare the laser
