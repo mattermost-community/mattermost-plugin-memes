@@ -116,15 +116,12 @@ func (p *Plugin) OnActivate() error {
 }
 
 func (p *Plugin) ServeHTTP(c *plugin.Context, w http.ResponseWriter, r *http.Request) {
-	if r.Header.Get("Mattermost-User-Id") == "" {
-		http.Error(w, "please log in", http.StatusForbidden)
-		return
-	}
-
 	p.router.ServeHTTP(w, r)
 }
 
 func (p *Plugin) ExecuteCommand(c *plugin.Context, args *model.CommandArgs) (*model.CommandResponse, *model.AppError) {
+	siteURL := *p.API.GetConfig().ServiceSettings.SiteURL
+
 	input := strings.TrimSpace(strings.TrimPrefix(args.Command, "/meme"))
 
 	if input == "" || input == "help" {
@@ -147,7 +144,7 @@ If your meme doesn't have well-defined phrasing or you want more control, you ca
 
 In either case...
 
-![brace-yourself](/plugins/memes/templates/brace-yourselves.jpg?text=brace+yourself.&text=memes+are+coming.)
+![brace-yourself](` + siteURL + `/plugins/memes/templates/brace-yourselves.jpg?text=brace+yourself.&text=memes+are+coming.)
 
 Available memes: ` + strings.Join(availableMemes, ", "),
 		}, nil
@@ -168,10 +165,11 @@ Available memes: ` + strings.Join(availableMemes, ", "),
 		queryString += "text=" + url.QueryEscape(t)
 	}
 
-	return &model.CommandResponse{
+	resp := &model.CommandResponse{
 		ResponseType: model.COMMAND_RESPONSE_TYPE_IN_CHANNEL,
-		Text:         "![" + template.Name + "](/plugins/memes/templates/" + template.Name + ".jpg" + queryString + ")",
-	}, nil
+		Text:         "![" + template.Name + "](" + siteURL + "/plugins/memes/templates/" + template.Name + ".jpg" + queryString + ")",
+	}
+	return resp, nil
 }
 
 func main() {
