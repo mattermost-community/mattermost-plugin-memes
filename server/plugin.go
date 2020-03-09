@@ -127,7 +127,7 @@ func (p *Plugin) ServeHTTP(c *plugin.Context, w http.ResponseWriter, r *http.Req
 func (p *Plugin) ExecuteCommand(c *plugin.Context, args *model.CommandArgs) (*model.CommandResponse, *model.AppError) {
 	input := strings.TrimSpace(strings.TrimPrefix(args.Command, "/meme"))
 
-	if input == "" {
+	if input == "" || input == "help" {
 		var availableMemes []string
 		for name, metadata := range memelibrary.Memes() {
 			availableMemes = append(availableMemes, name)
