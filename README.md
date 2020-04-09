@@ -3,6 +3,7 @@
 [![Build Status](https://img.shields.io/circleci/project/github/mattermost/mattermost-plugin-memes/master.svg)](https://circleci.com/gh/mattermost/mattermost-plugin-memes)
 [![Code Coverage](https://img.shields.io/codecov/c/github/mattermost/mattermost-plugin-memes/master.svg)](https://codecov.io/gh/mattermost/mattermost-plugin-memes)
 
+**Maintainer:** [@hanzei](https://github.com/hanzei)
 
 This plugin will create a slash command that you can use to create memes!
 
