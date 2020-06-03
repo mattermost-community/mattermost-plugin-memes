@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"net/url"
 	"os"
+	"sort"
 	"strings"
 
 	"github.com/gorilla/mux"
@@ -119,8 +120,9 @@ func (p *Plugin) OnActivate() error {
 
 func createMemesCommand() *model.Command {
 	var availableMemes = getAvailableMemes()
-	memes := model.NewAutocompleteData(memeCommand, "[meme-name]", "Available memes: "+strings.Join(availableMemes, ", "))
+	memes := model.NewAutocompleteData(memeCommand, "[meme-name]", "Create awesome Memes yourself!")
 
+	sort.Strings(availableMemes)
 	for _, name := range availableMemes {
 		currentMeme := model.NewAutocompleteData(name, "", fmt.Sprintf("sends %s meme", name))
 		currentMeme.AddNamedTextArgument("", "displays text on meme", "[text]", "\"(\\w)*\"( \"(\\w)*\")?", false)
