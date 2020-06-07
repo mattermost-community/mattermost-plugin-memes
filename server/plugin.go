@@ -125,7 +125,7 @@ func createMemesCommand() *model.Command {
 	sort.Strings(availableMemes)
 	for _, name := range availableMemes {
 		currentMeme := model.NewAutocompleteData(name, "", fmt.Sprintf("sends %s meme", name))
-		currentMeme.AddNamedTextArgument("", "displays text on meme", "[text]", "\"(\\w)*\"( \"(\\w)*\")?", false)
+		currentMeme.AddTextArgument("displays text on meme", "[text]", "")
 		memes.AddCommand(currentMeme)
 	}
 
