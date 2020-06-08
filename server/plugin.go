@@ -3,10 +3,12 @@ package main
 import (
 	"flag"
 	"fmt"
+	"github.com/pkg/errors"
 	"image/jpeg"
 	"net/http"
 	"net/url"
 	"os"
+	"sort"
 	"strings"
 
 	"github.com/gorilla/mux"
@@ -17,6 +19,8 @@ import (
 	"github.com/mattermost/mattermost-plugin-memes/server/meme"
 	"github.com/mattermost/mattermost-plugin-memes/server/memelibrary"
 )
+
+const memeCommand = "meme"
 
 func resolveMeme(input string) (*meme.Template, []string, error) {
 	if template, text := memelibrary.PatternMatch(input); template != nil {
@@ -108,11 +112,38 @@ type Plugin struct {
 func (p *Plugin) OnActivate() error {
 	p.router = mux.NewRouter()
 	p.router.HandleFunc("/templates/{name}.jpg", serveTemplateJPEG).Methods("GET")
-	return p.API.RegisterCommand(&model.Command{
-		Trigger:          "meme",
+	if err := p.API.RegisterCommand(createMemesCommand()); err != nil {
+		return errors.Wrapf(err, "failed to register %s command", memeCommand)
+	}
+	return nil
+}
+
+func createMemesCommand() *model.Command {
+	var availableMemes = getAvailableMemes()
+	memes := model.NewAutocompleteData(memeCommand, "[meme-name]", "Create awesome Memes yourself!")
+
+	sort.Strings(availableMemes)
+	for _, name := range availableMemes {
+		currentMeme := model.NewAutocompleteData(name, "", fmt.Sprintf("sends %s meme", name))
+		currentMeme.AddTextArgument("displays text on meme", "[text]", "")
+		memes.AddCommand(currentMeme)
+	}
+
+	return &model.Command{
+		Trigger:          memeCommand,
 		AutoComplete:     true,
 		AutoCompleteDesc: "Renders custom memes so you can express yourself with culture.",
-	})
+		AutocompleteData: memes,
+	}
+}
+
+func getAvailableMemes() []string {
+	var availableMemes []string
+	for name, metadata := range memelibrary.Memes() {
+		availableMemes = append(availableMemes, name)
+		availableMemes = append(availableMemes, metadata.Aliases...)
+	}
+	return availableMemes
 }
 
 func (p *Plugin) ServeHTTP(c *plugin.Context, w http.ResponseWriter, r *http.Request) {
@@ -125,11 +156,7 @@ func (p *Plugin) ExecuteCommand(c *plugin.Context, args *model.CommandArgs) (*mo
 	input := strings.TrimSpace(strings.TrimPrefix(args.Command, "/meme"))
 
 	if input == "" || input == "help" {
-		var availableMemes []string
-		for name, metadata := range memelibrary.Memes() {
-			availableMemes = append(availableMemes, name)
-			availableMemes = append(availableMemes, metadata.Aliases...)
-		}
+		var availableMemes = getAvailableMemes()
 		return &model.CommandResponse{
 			ResponseType: model.COMMAND_RESPONSE_TYPE_EPHEMERAL,
 			Text: `You can get started meming in one of two ways:
