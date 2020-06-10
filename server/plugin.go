@@ -3,13 +3,14 @@ package main
 import (
 	"flag"
 	"fmt"
-	"github.com/pkg/errors"
 	"image/jpeg"
 	"net/http"
 	"net/url"
 	"os"
 	"sort"
 	"strings"
+
+	"github.com/pkg/errors"
 
 	"github.com/gorilla/mux"
 	shellquote "github.com/kballard/go-shellquote"
@@ -122,7 +123,6 @@ func createMemesCommand() *model.Command {
 	var availableMemes = getAvailableMemes()
 	memes := model.NewAutocompleteData(memeCommand, "[meme-name]", "Create awesome Memes yourself!")
 
-	sort.Strings(availableMemes)
 	for _, name := range availableMemes {
 		currentMeme := model.NewAutocompleteData(name, "", fmt.Sprintf("sends %s meme", name))
 		currentMeme.AddTextArgument("displays text on meme", "[text]", "")
@@ -143,6 +143,7 @@ func getAvailableMemes() []string {
 		availableMemes = append(availableMemes, name)
 		availableMemes = append(availableMemes, metadata.Aliases...)
 	}
+	sort.Strings(availableMemes)
 	return availableMemes
 }
 
