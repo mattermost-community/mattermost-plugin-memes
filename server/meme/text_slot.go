@@ -81,7 +81,6 @@ func (s *TextSlot) Render(img draw.Image, text string) {
 			Dot:  layout.LinePositions[i],
 		}
 		drawer.DrawString(line)
-
 	}
 }
 
