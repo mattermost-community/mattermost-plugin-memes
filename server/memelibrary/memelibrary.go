@@ -6,6 +6,7 @@ import (
 	"path/filepath"
 	"strings"
 
+	// registering decoder functions
 	_ "image/jpeg"
 	_ "image/png"
 
