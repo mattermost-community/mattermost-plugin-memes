@@ -111,6 +111,9 @@ type Plugin struct {
 }
 
 func (p *Plugin) OnActivate() error {
+	if p.API.GetConfig().ServiceSettings.SiteURL == nil {
+		p.API.LogError("SiteURL must be set. Some features will operate incorrectly if the SiteURL is not set. See documentation for details: http://about.mattermost.com/default-site-url")
+	}
 	p.router = mux.NewRouter()
 	p.router.HandleFunc("/templates/{name}.jpg", serveTemplateJPEG).Methods("GET")
 	if err := p.API.RegisterCommand(createMemesCommand()); err != nil {
@@ -152,7 +155,7 @@ func (p *Plugin) ServeHTTP(c *plugin.Context, w http.ResponseWriter, r *http.Req
 }
 
 func (p *Plugin) ExecuteCommand(c *plugin.Context, args *model.CommandArgs) (*model.CommandResponse, *model.AppError) {
-	siteURL := *p.API.GetConfig().ServiceSettings.SiteURL
+	siteURL := p.GetSiteURL()
 
 	input := strings.TrimSpace(strings.TrimPrefix(args.Command, "/meme"))
 
@@ -198,6 +201,15 @@ Available memes: ` + strings.Join(availableMemes, ", "),
 		Text:         "![" + template.Name + "](" + siteURL + "/plugins/memes/templates/" + template.Name + ".jpg" + queryString + ")",
 	}
 	return resp, nil
+}
+
+func (p *Plugin) GetSiteURL() string {
+	siteURL := ""
+	ptr := p.API.GetConfig().ServiceSettings.SiteURL
+	if ptr != nil {
+		siteURL = *ptr
+	}
+	return siteURL
 }
 
 func main() {
