@@ -15,20 +15,21 @@ For more information like available memes or command syntax type `/meme ` and pr
 
 ## Installation
 
-Go to the GitHub releases tab and download the latest release for your server architecture. You can upload this file in the Mattermost system console to install the plugin.
+From Mattermost 5.16 and later, the Memes Plugin is included in the Plugin Marketplace which can be accessed from **Main Menu > Plugins Marketplace**. You can install the Memes plugin there.
 
-## Developing
+In Mattermost 5.15 and earlier, follow these steps:
 
-Run `make vendor` to install third-party dependencies and `make memelibrary/assets.go` to bundle up the meme assets (images, fonts, etc.). From there, you can develop like any other Go project: Hack away and use `go test`, `go build`, etc.
+1. Go to https://github.com/mattermost/mattermost-plugin-memes/releases/latest to download the latest release file in zip or tar.gz format.
+2. Upload the file through **System Console > Plugins > Management**. See [documentation](https://docs.mattermost.com/administration/plugins.html#set-up-guide) for more details.
+
+## Development
+
+Read our documentation about the [Developer Workflow](https://developers.mattermost.com/extend/plugins/developer-workflow/) and [Developer Setup](https://developers.mattermost.com/extend/plugins/developer-setup/) for more information about developing and extending plugins.
+
+Run `make memelibrary` to bundle up the meme assets (images, fonts, etc.).
 
 For convenience, you can run the plugin from your terminal to preview an image for a given input. For example, on macOS, you can run the following to generate the above meme and open it in Preview:
 
-`go run plugin.go -out demo.jpg 'memes. memes everywhere' && open demo.jpg`
+`go run server/plugin.go -out demo.jpg 'memes. memes everywhere' && open demo.jpg`
 
-This is especially useful when adding or modifying memes as you can quickly modify assets, `make memelibrary/assets.go`, and preview the result using the above command. (See the files in memelibrary/assets to get started with that.)
-
-If you want to create a fully bundled plugin that will run on a local server, you can use `make mattermost-memes-plugin.tar.gz`.
-
-## Releasing
-
-To make a release, update the version number in plugin.yaml, and create a release via the GitHub interface. CircleCI will upload the distributables for you.
+This is especially useful when adding or modifying memes as you can quickly modify assets, `make memelibrary`, and preview the result using the above command. (See the files in ` memelibrary/assets` to get started with that.)
