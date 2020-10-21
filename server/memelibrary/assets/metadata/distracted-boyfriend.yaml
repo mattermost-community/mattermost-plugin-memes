@@ -1,0 +1,17 @@
+example:
+  - American English
+  - I gotta learn it
+  - British English
+slots:
+  - x: 115
+    y: 290
+    width: 140
+    height: 100
+  - x: 400
+    y: 140
+    width: 180
+    height: 100
+  - x: 600
+    y: 210
+    width: 160
+    height: 100
