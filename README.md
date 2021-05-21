@@ -9,7 +9,7 @@ This plugin will create a slash command that you can use to create memes!
 
 <img src="screenshot.png" width="583" height="426" />
 
-`/meme memes. memes everywhere`
+`/meme everywhere "memes." "memes everywhere"`
 
 For more information like available memes or command syntax type `/meme ` and press enter.
 
