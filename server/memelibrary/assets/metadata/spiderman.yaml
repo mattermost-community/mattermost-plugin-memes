@@ -1,0 +1,21 @@
+slots:
+  - x: 10
+    y: 10
+    width: 200
+    height: 80
+    font: Anton-Regular
+  - x: 60
+    y: 250
+    width: 200
+    height: 80
+    font: ComicNeue-Regular
+  - x: 250
+    y: 160
+    width: 200
+    height: 80
+    font: ComicNeue-Regular
+  - x: 400
+    y: 300
+    width: 200
+    height: 80
+    font: ComicNeue-Regular

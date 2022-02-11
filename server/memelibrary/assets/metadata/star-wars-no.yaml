@@ -1,0 +1,16 @@
+aliases:
+  - nooo
+slots:
+  - x: 10
+    y: 250
+    width: 600
+    height: 65
+    font: ComicNeue-Regular
+    text_color: [255, 255, 255]
+  - x: 10
+    y: 585
+    width: 600
+    height: 65 
+    font: ComicNeue-Regular
+    text_color: [255, 255, 255]
+

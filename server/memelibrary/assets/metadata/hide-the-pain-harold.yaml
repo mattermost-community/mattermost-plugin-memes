@@ -1,0 +1,14 @@
+slots:
+  - x: 10
+    y: 220
+    width: 470
+    height: 80
+    font: ComicNeue-Regular
+  - x: 10
+    y: 520
+    width: 470
+    height: 80
+    font: ComicNeue-Regular
+example:
+  - Finally got rid of one drive on windows
+  - it deleted my local files

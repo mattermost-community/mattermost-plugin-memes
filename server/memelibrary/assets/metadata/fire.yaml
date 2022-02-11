@@ -1,0 +1,8 @@
+aliases:
+  - fire!
+patterns:
+  - pattern: (fire!|Fire!) (.+)
+    text:
+    - $1
+    - $2
+    example: Fire! Im gona write an email now.
