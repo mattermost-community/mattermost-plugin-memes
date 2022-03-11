@@ -1,0 +1,8 @@
+aliases:
+  - hello-it
+patterns:
+  - pattern: (Hello|hello) (IT,?|it,?)(.+)
+    text:
+    - $1 $2
+    - $3
+    example: Hello IT, have you tried turning it off and on again?

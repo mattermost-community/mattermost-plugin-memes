@@ -1,0 +1,13 @@
+slots:
+  - x: 10
+    y: 10
+    width: 270
+    height: 80
+    font: ComicNeue-Bold
+  - x: 300
+    y: 200
+    width: 270
+    height: 80
+    font: ComicNeue-Bold
+example:
+  - Datacenter on fire
