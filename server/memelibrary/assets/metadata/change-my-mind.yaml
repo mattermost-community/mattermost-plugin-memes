@@ -9,3 +9,4 @@ slots:
     width: 200
     height: 80
     rotation: -7
+    font: Zag-Regular

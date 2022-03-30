@@ -10,7 +10,7 @@ linters-settings:
     simplify: true
   goimports:
     local-prefixes: github.com/mattermost/mattermost-plugin-memes
-  revive:
+  golint:
     min-confidence: 0
   govet:
     check-shadowing: true
@@ -28,6 +28,7 @@ linters:
     - gocritic
     - gofmt
     - goimports
+    - golint
     - gosec
     - gosimple
     - govet
@@ -35,7 +36,6 @@ linters:
     - interfacer
     - misspell
     - nakedret
-    - revive
     - staticcheck
     - structcheck
     - stylecheck
