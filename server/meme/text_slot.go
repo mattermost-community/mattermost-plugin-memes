@@ -32,15 +32,15 @@ const DEBUG = false
 const lineSpacing = 0.8
 
 type TextSlot struct {
-	Bounds              image.Rectangle
 	Font                *opentype.Font
-	MaxFontSize         float64
-	HorizontalAlignment HorizontalAlignment
-	VerticalAlignment   VerticalAlignment
 	TextColor           color.Color
 	OutlineColor        color.Color
+	HorizontalAlignment HorizontalAlignment
+	VerticalAlignment   VerticalAlignment
 	OutlineWidth        int
 	AllUppercase        bool
+	Bounds              image.Rectangle
+	MaxFontSize         float64
 	Rotation            float64
 }
 
@@ -102,7 +102,6 @@ func (s *TextSlot) Render(dc *gg.Context, text string, debug bool) {
 			y := yStart + float64(delta.Y)/64
 			dc.DrawStringWrapped(text, x, y, 0, yAlign, float64(s.Bounds.Dx()), lineSpacing, xAlign)
 		}
-
 	}
 
 	dc.SetColor(textColor)

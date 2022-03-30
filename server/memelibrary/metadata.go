@@ -12,25 +12,24 @@ import (
 )
 
 type Pattern struct {
-	Pattern string
-	Text    []string
-	Example string
-
 	pattern *regexp.Regexp
+	Pattern string
+	Example string
+	Text    []string
 }
 
 type Slot struct {
+	AllUppercase        *bool `yaml:"all_uppercase"`
+	Font                string
+	HorizontalAlignment *meme.HorizontalAlignment `yaml:"horizontal_alignment"`
+	VerticalAlignment   *meme.VerticalAlignment   `yaml:"vertical_alignment"`
+	TextColor           []int                     `yaml:"text_color"`
+	OutlineColor        []int                     `yaml:"outline_color"`
 	X                   int
 	Y                   int
 	Width               int
 	Height              int
-	Font                string
-	TextColor           []int                     `yaml:"text_color"`
-	OutlineColor        []int                     `yaml:"outline_color"`
-	OutlineWidth        int                       `yaml:"outline_width"`
-	AllUppercase        *bool                     `yaml:"all_uppercase"`
-	VerticalAlignment   *meme.VerticalAlignment   `yaml:"vertical_alignment"`
-	HorizontalAlignment *meme.HorizontalAlignment `yaml:"horizontal_alignment"`
+	OutlineWidth        int `yaml:"outline_width"`
 	Rotation            float64
 }
 
