@@ -89,7 +89,6 @@ func (s *TextSlot) Render(dc *gg.Context, text string, debug bool) {
 		break
 	}
 
-	// Some black magic to draw outline
 	if s.OutlineColor != nil {
 		offset := face.Metrics().Height / 256 * fixed.Int26_6(outlineWidth)
 		for _, delta := range []fixed.Point26_6{
@@ -105,7 +104,6 @@ func (s *TextSlot) Render(dc *gg.Context, text string, debug bool) {
 	}
 
 	dc.SetColor(textColor)
-	// dc.SetRGB(0.5, 0.5, 0.2)
 	dc.DrawStringWrapped(text,
 		xStart,
 		yStart,

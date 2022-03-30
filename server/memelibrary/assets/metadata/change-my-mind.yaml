@@ -2,7 +2,7 @@ patterns:
   - pattern: (.+) change my mind
     text:
       - $1
-    example: Russia should leave Ukraine change my mind
+    example: Mattermost memes are the best change my mind
 slots:
   - x: 210
     y: 230
