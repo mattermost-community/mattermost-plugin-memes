@@ -1,0 +1,11 @@
+patterns:
+  - pattern: (.+) change my mind
+    text:
+      - $1
+    example: Russia should leave Ukraine change my mind
+slots:
+  - x: 210
+    y: 230
+    width: 200
+    height: 80
+    rotation: -7
