@@ -1,0 +1,14 @@
+slots:
+  - x: 256
+    y: 10
+    width: 226
+    height: 201
+    font: Anton-Regular
+  - x: 256
+    y: 251
+    width: 226
+    height: 201
+    font: Anton-Regular
+example:
+  - Test in staging
+  - Test in prod
