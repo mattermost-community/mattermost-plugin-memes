@@ -4,8 +4,8 @@
     "description": "Gives you the ability to quickly create and post memes via a /meme slash command.",
     "homepage_url": "https://github.com/mattermost/mattermost-plugin-memes",
     "support_url": "https://github.com/mattermost/mattermost-plugin-memes/issues",
-    "release_notes_url": "https://github.com/mattermost/mattermost-plugin-memes/releases/tag/v1.4.0",
-    "version": "1.4.0",
+    "release_notes_url": "https://github.com/mattermost/mattermost-plugin-memes/releases/tag/v1.5.0",
+    "version": "1.5.0",
     "min_server_version": "5.2.0",
     "server": {
         "executables": {
