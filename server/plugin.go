@@ -199,7 +199,7 @@ Available memes: ` + strings.Join(availableMemes, ", "),
 	resp := &model.CommandResponse{
 		ResponseType: model.COMMAND_RESPONSE_TYPE_IN_CHANNEL,
 		//Text:         "![" + template.Name + "](" + siteURL + "/plugins/memes/templates/" + template.Name + ".jpg" + queryString + ")",
-		Attachments: SlackAttachment{ ImageURL: siteURL + "/plugins/memes/templates/" + template.Name + ".jpg" + queryString },
+		Attachments: []*model.SlackAttachment{{ImageURL: siteURL + "/plugins/memes/templates/" + template.Name + ".jpg" + queryString }},
 	}
 	return resp, nil
 }
