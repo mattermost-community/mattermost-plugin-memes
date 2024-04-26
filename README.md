@@ -19,10 +19,6 @@ For more information like available memes or command syntax type `/meme ` and pr
 
 ## Installation
 
-From Mattermost 5.16 and later, the Memes Plugin is included in the Plugin Marketplace which can be accessed from **Main Menu > Plugins Marketplace**. You can install the Memes plugin there.
-
-In Mattermost 5.15 and earlier, follow these steps:
-
 1. Go to https://github.com/mattermost/mattermost-plugin-memes/releases/latest to download the latest release file in zip or tar.gz format.
 2. Upload the file through **System Console > Plugins > Management**. See [documentation](https://docs.mattermost.com/administration/plugins.html#set-up-guide) for more details.
 
