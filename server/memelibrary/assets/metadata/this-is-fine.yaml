@@ -4,10 +4,14 @@ slots:
     width: 270
     height: 80
     font: ComicNeue-Bold
+    text_color: [255, 255, 255]
+    outline_color: [0,0,0]
   - x: 300
     y: 200
     width: 270
     height: 80
     font: ComicNeue-Bold
+    text_color: [255, 255, 255]
+    outline_color: [0,0,0]
 example:
   - Datacenter on fire
