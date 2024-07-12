@@ -14,8 +14,8 @@ import (
 
 	"github.com/gorilla/mux"
 	shellquote "github.com/kballard/go-shellquote"
-	"github.com/mattermost/mattermost-server/v5/model"
-	"github.com/mattermost/mattermost-server/v5/plugin"
+	"github.com/mattermost/mattermost/server/public/model"
+	"github.com/mattermost/mattermost/server/public/plugin"
 
 	"github.com/mattermost/mattermost-plugin-memes/server/meme"
 	"github.com/mattermost/mattermost-plugin-memes/server/memelibrary"
@@ -162,7 +162,7 @@ func (p *Plugin) ExecuteCommand(c *plugin.Context, args *model.CommandArgs) (*mo
 	if input == "" || input == "help" {
 		var availableMemes = getAvailableMemes()
 		return &model.CommandResponse{
-			ResponseType: model.COMMAND_RESPONSE_TYPE_EPHEMERAL,
+			ResponseType: model.CommandResponseTypeEphemeral,
 			Text: `You can get started meming in one of two ways:
 
 If your meme has well-defined phrasing, you can just type it:
@@ -197,7 +197,7 @@ Available memes: ` + strings.Join(availableMemes, ", "),
 	}
 
 	resp := &model.CommandResponse{
-		ResponseType: model.COMMAND_RESPONSE_TYPE_IN_CHANNEL,
+		ResponseType: model.CommandResponseTypeInChannel,
 		Text:         "![" + template.Name + "](" + siteURL + "/plugins/memes/templates/" + template.Name + ".jpg" + queryString + ")",
 	}
 	return resp, nil
