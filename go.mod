@@ -4,7 +4,7 @@ go 1.12
 
 require (
 	github.com/golang/freetype v0.0.0-20170609003504-e2365dfdc4a0
-	github.com/gorilla/mux v1.7.4
+	github.com/gorilla/mux v1.8.1
 	github.com/kballard/go-shellquote v0.0.0-20180428030007-95032a82bc51
 	github.com/mattermost/mattermost-server/v5 v5.24.0-rc1
 	github.com/mholt/archiver/v3 v3.3.0
