@@ -12,20 +12,25 @@ import (
 )
 
 type Pattern struct {
-	Pattern string
-	Text    []string
-	Example string
-
 	pattern *regexp.Regexp
+	Pattern string
+	Example string
+	Text    []string
 }
 
 type Slot struct {
-	X         int
-	Y         int
-	Width     int
-	Height    int
-	Font      string
-	TextColor []int `yaml:"text_color"`
+	AllUppercase        *bool `yaml:"all_uppercase"`
+	Font                string
+	HorizontalAlignment *meme.HorizontalAlignment `yaml:"horizontal_alignment"`
+	VerticalAlignment   *meme.VerticalAlignment   `yaml:"vertical_alignment"`
+	TextColor           []int                     `yaml:"text_color"`
+	OutlineColor        []int                     `yaml:"outline_color"`
+	X                   int
+	Y                   int
+	Width               int
+	Height              int
+	OutlineWidth        int `yaml:"outline_width"`
+	Rotation            float64
 }
 
 type Metadata struct {
@@ -71,10 +76,35 @@ func (m *Metadata) TextSlots(bounds image.Rectangle) (slots []*meme.TextSlot) {
 				textSlot.Font = fonts["Anton-Regular"]
 				textSlot.TextColor = color.White
 				textSlot.OutlineColor = color.Black
+			}
+			if tc := sliceToColor(slot.TextColor); tc != nil {
+				textSlot.TextColor = tc
+			}
+			if oc := sliceToColor(slot.OutlineColor); oc != nil {
+				textSlot.OutlineColor = oc
+			}
+			if ow := slot.OutlineWidth; ow != 0 {
+				textSlot.OutlineWidth = ow
+			}
+			if uc := slot.AllUppercase; uc != nil {
+				textSlot.AllUppercase = *uc
+			} else {
 				textSlot.AllUppercase = true
 			}
-			if c := sliceToColor(slot.TextColor); c != nil {
-				textSlot.TextColor = c
+
+			if rot := slot.Rotation; rot != 0 {
+				textSlot.Rotation = rot
+			}
+
+			if va := slot.VerticalAlignment; va != nil {
+				textSlot.VerticalAlignment = *va
+			} else {
+				textSlot.VerticalAlignment = meme.Middle
+			}
+			if ha := slot.HorizontalAlignment; ha != nil {
+				textSlot.HorizontalAlignment = *ha
+			} else {
+				textSlot.HorizontalAlignment = meme.Center
 			}
 			slots = append(slots, textSlot)
 		}
@@ -84,18 +114,22 @@ func (m *Metadata) TextSlots(bounds image.Rectangle) (slots []*meme.TextSlot) {
 	padding := bounds.Dy() / 20
 	return []*meme.TextSlot{
 		{
-			Bounds:       image.Rect(padding, padding, bounds.Dx()-padding, bounds.Dy()/4),
-			Font:         fonts["Anton-Regular"],
-			TextColor:    color.White,
-			OutlineColor: color.Black,
-			AllUppercase: true,
+			Bounds:              image.Rect(padding, padding, bounds.Dx()-padding, bounds.Dy()/4),
+			Font:                fonts["Anton-Regular"],
+			TextColor:           color.White,
+			OutlineColor:        color.Black,
+			AllUppercase:        true,
+			VerticalAlignment:   meme.Middle,
+			HorizontalAlignment: meme.Center,
 		},
 		{
-			Bounds:       image.Rect(padding, bounds.Dy()*3/4, bounds.Dx()-padding, bounds.Dy()-padding),
-			Font:         fonts["Anton-Regular"],
-			TextColor:    color.White,
-			OutlineColor: color.Black,
-			AllUppercase: true,
+			Bounds:              image.Rect(padding, bounds.Dy()*3/4, bounds.Dx()-padding, bounds.Dy()-padding),
+			Font:                fonts["Anton-Regular"],
+			TextColor:           color.White,
+			OutlineColor:        color.Black,
+			AllUppercase:        true,
+			VerticalAlignment:   meme.Middle,
+			HorizontalAlignment: meme.Center,
 		},
 	}
 }

@@ -1,0 +1,12 @@
+patterns:
+  - pattern: (.+) change my mind
+    text:
+      - $1
+    example: Mattermost memes are the best change my mind
+slots:
+  - x: 210
+    y: 230
+    width: 200
+    height: 80
+    rotation: -7
+    font: Zag-Regular

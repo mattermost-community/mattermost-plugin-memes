@@ -10,12 +10,12 @@ import (
 	_ "image/jpeg"
 	_ "image/png"
 
-	"github.com/golang/freetype/truetype"
+	"golang.org/x/image/font/opentype"
 
 	"github.com/mattermost/mattermost-plugin-memes/server/meme"
 )
 
-var fonts = make(map[string]*truetype.Font)
+var fonts = make(map[string]*opentype.Font)
 var images = make(map[string]image.Image)
 var metadata = make(map[string]*Metadata)
 var templates = make(map[string]*meme.Template)
@@ -37,7 +37,7 @@ func init() {
 	fontAssets, _ := AssetDir("fonts")
 	for _, assetName := range fontAssets {
 		fontName := strings.TrimSuffix(assetName, filepath.Ext(assetName))
-		font, err := truetype.Parse(MustAsset(filepath.Join("fonts", assetName)))
+		font, err := opentype.Parse(MustAsset(filepath.Join("fonts", assetName)))
 		if err != nil {
 			panic(err)
 		}
